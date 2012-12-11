@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Issues</title>
+	<script>
+		
+	    window.FromServer = {{ for_client|safe }};
+	    
+	    if (FromServer.code == 'success') {
+  	    var data = window.opener.I.server.data;
+  	    data.name = FromServer.name;
+  	    data.username = FromServer.username;
+	    }
+	    
+	    window.close();
+	    
+	</script>
+</head>
+<body> 
+</body>
+</html>
