@@ -1,14 +1,30 @@
 .header {
   overflow: hidden;
   padding: 15px;
+  background: #eee;
+  border-bottom: 1px solid #ccc;
+
+  .user {
+    float: right;
+  }
 }
 
-.user {
-  float: right;
+.main-content {
+  min-width: 600px;
+  max-width: 1600px;
+  width: 80%;
+  margin: 20px auto 0 auto;
+  
+  .row {
+    margin: 10px 0;
+  }
 }
 
 .login {
   display: none;
+  position: fixed;
+  top: 40px;
+  right: 40px;
   width: 500px;
   height: 350px;
   background: white;

@@ -27,15 +27,24 @@
           if (I.server.data.username) {
             self.submit();
           } else {
-            self.logIn();
+            self.logIn({
+              prompt: 'You need to sign in first.',
+              callback: function() {
+                self.submit();
+              }
+            });
           }
         });
     },
     
     // ----------
-    logIn: function() {
+    logIn: function(config) {
       var self = this;
       var $login = $('.login').show();
+      
+      if (config.prompt) {
+        $login.find('.prompt').text(config.prompt);
+      }
       
       var twitterUrl = "";
       $.ajax({
@@ -54,17 +63,26 @@
             if (I.server.data.username) {
               clearInterval(interval);
               self.showLoggedIn();
+              $login.hide();
+              if (config.callback) {
+                config.callback();
+              }
             }
           }, 500);
         });
     },
     
     // ----------
+    submit: function() {
+      alert('Coming Soon!');
+    },
+    
+    // ----------
     showLoggedIn: function() {
       this.$user
-        .text(I.server.data.username);
+        .text(I.server.data.username + ' ');
 
-      $(' <a href="#">Sign Out</a>')
+      $('<a href="#">Sign Out</a>')
         .click(function(event) {
           event.preventDefault();
           location.href = 'logout';

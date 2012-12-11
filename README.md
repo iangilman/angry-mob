@@ -16,5 +16,8 @@ http://blog.iangilman.com/2012/01/issue-tracking-for-real-world.html
 
 # To Do
 
+* Actually submit
+* Other login methods (Facebook, email)
+* Show a list of submitted reports
 * When you sign out, clean out the whole session
 * Don't do twitter sign in until after the twitter url comes back
