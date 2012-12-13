@@ -16,7 +16,8 @@ http://blog.iangilman.com/2012/01/issue-tracking-for-real-world.html
 
 # To Do
 
-* Actually submit
+* Show list of issues
+* Show individual issue
 * Other login methods (Facebook, email)
 * Show a list of submitted reports
 * When you sign out, clean out the whole session
