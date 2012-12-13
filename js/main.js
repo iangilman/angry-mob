@@ -1,20 +1,21 @@
-/*globals I */
+/*globals I, Spinner */
 
 (function() {
 
   // ----------
   window.I = {
+    Views: {},
     server: {},
+    currentView: null,
+    spinner: null,
+    mode: '',
     
     // ----------
     init: function() {
       var self = this;
       
-      this.$description = $('.description');
-      this.$title = $('.title');
-      
       this.$user = $('.user');
-      if (!I.server.data.username) {
+      if (!this.loggedIn()) {
         $('<a href="#">Sign In</a>')
           .click(function(event) {
             event.preventDefault();
@@ -24,20 +25,52 @@
       } else {
         this.showLoggedIn();
       }
-        
-      $('.submit')
-        .click(function() {
-          if (I.server.data.username) {
-            self.submit();
-          } else {
-            self.logIn({
-              prompt: 'You need to sign in first.',
-              callback: function() {
-                self.submit();
-              }
-            });
-          }
+      
+      this.$newIssue = $('.new-issue')
+        .click(function(event) {
+          event.preventDefault();
+          self.go('NewIssue');
         });
+      
+      this.go('Home');
+    },
+    
+    // ----------
+    go: function(mode) {
+      var $div = $("<div>")
+        .addClass(mode)
+        .append(this.template(mode));
+        
+      $(".main-content")
+        .empty()
+        .append($div);
+        
+      this.mode = mode;
+      if (this.mode in this.Views) {
+        this.currentView = new this.Views[this.mode]();
+      }
+    },
+    
+    // ----------
+    spin: function(value) {
+      if (value) {
+        this.spinner = new Spinner().spin($("body")[0]);     
+      } else {
+        this.spinner.stop();
+      }
+    },
+    
+    // ----------
+    template: function(name, config) {
+      var rawTemplate = $("#" + name + "-template").text();
+      var template = _.template(rawTemplate);
+      var html = template(config);
+      return $(html);
+    },
+
+    // ----------
+    loggedIn: function() {
+      return !!this.server.data.username;
     },
     
     // ----------
@@ -73,24 +106,6 @@
             }
           }, 500);
         });
-    },
-    
-    // ----------
-    submit: function() {
-      $.ajax({
-        url: '/api/new-issue',
-        type: 'POST',
-        data: {
-          description: this.$description.val(),
-          title: this.$title.val()
-        },
-        success: function(data) {
-          alert('Success!');
-        },
-        error: function() {
-          alert('Failure!');
-        } 
-      });
     },
     
     // ----------

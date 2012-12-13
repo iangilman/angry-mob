@@ -10,16 +10,19 @@
     <script src="/lib/less-1.3.0.min.js"></script>
     <script src="/lib/amplify.min.js"></script>
     <script src="/lib/underscore-min.js"></script>
+    <script src="/lib/spin.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/new-issue.js"></script>
+    <script src="js/home.js"></script>
   	<script>
       I.server.data = {{ for_client|safe }};
     </script>
-  </head>
-  <body>
-    <div class="header">
-      <div class="user"></div>
-    </div>
-    <div class="main-content">
+
+    <script id="Home-template" type="text/template">
+      <div>Welcome to Issues!</div>
+    </script>
+
+    <script id="NewIssue-template" type="text/template">
       <div class="row">
         <input type="text" class="title">
       </div>
@@ -29,6 +32,19 @@
       <div class="row">
         <button class="submit">Report</button>
       </div>
+    </script>
+
+  </head>
+  <body>
+    <div class="header">
+      <div class="left">
+        <a class="new-issue" href="#">New Issue</a>
+      </div>
+      <div class="right">
+        <div class="user"></div>
+      </div>
+    </div>
+    <div class="main-content">
     </div>
     <div class="login">
       <div class="prompt"></div>
