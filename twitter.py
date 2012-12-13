@@ -13,18 +13,18 @@ def get_client(request):
   if not has_keys:
     return None
  
-  callback_url = "%s/twitter-callback" % request.host_url
+  callback_url = '%s/twitter-callback' % request.host_url
   return oauth.TwitterClient(keys.twitter_consumer_key, keys.twitter_consumer_secret,
     callback_url)
   
 # ----------
-def get_authorization_url(request, result):
-  client = get_client(request)
+def get_authorization_url(context):
+  client = get_client(context['request'])
   if not client:
     return
  
-  result["url"] = client.get_authorization_url()
-  result["code"] = "success"
+  context['result']['url'] = client.get_authorization_url()
+  context['result']['code'] = 'success'
 
 # ----------
 def get_user_info(request, auth_token, auth_verifier):

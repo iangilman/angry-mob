@@ -2,20 +2,23 @@
 # ==========
 from django.utils import simplejson as json
 
-import util
+import issues
 import twitter
+import util
 
 # ----------
-def get(request, response, method):
-	if util.check_referrer(request, response) == False:
+def get(method, context):
+	if util.check_referrer(context['request'], context['response']) == False:
 		return
 	
-	result = {
-		"code": "failure"
+	context['result'] = {
+		'code': 'failure'
 	}
 
-	if method == "get-twitter-url":
-		twitter.get_authorization_url(request, result)
+	if method == 'get-twitter-url':
+		twitter.get_authorization_url(context)
+	elif method == 'new-issue':
+		issues.new_issue(context)
 			
-	response.headers['Content-Type'] = "application/json"
-	response.out.write(json.dumps(result))
+	context['response'].headers['Content-Type'] = 'application/json'
+	context['response'].out.write(json.dumps(context['result']))

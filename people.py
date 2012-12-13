@@ -11,6 +11,10 @@ class Person(db.Model):
   username = db.StringProperty()
   
 # ----------
+def get(db_id):
+  return Person.get_by_id(db_id)
+
+# ----------
 def get_twitter(twitter_id):
   person = Person.gql("WHERE twitter_id = :1", twitter_id).get()
   if person:

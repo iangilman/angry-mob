@@ -43,10 +43,18 @@ class LogoutHandler(session_module.BaseSessionHandler):
 # ----------
 class Api(session_module.BaseSessionHandler):
   def get(self, method):
-    api.get(self.request, self.response, method)
+    api.get(method, {
+      'request': self.request,
+      'response': self.response,
+      'session': self.session
+    })
 
   def post(self, method):
-    api.get(self.request, self.response, method)
+    api.get(method, {
+      'request': self.request,
+      'response': self.response,
+      'session': self.session
+    })
 
 # ----------
 class Twitter(session_module.BaseSessionHandler):

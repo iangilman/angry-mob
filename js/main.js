@@ -10,6 +10,9 @@
     init: function() {
       var self = this;
       
+      this.$description = $('.description');
+      this.$title = $('.title');
+      
       this.$user = $('.user');
       if (!I.server.data.username) {
         $('<a href="#">Sign In</a>')
@@ -74,7 +77,20 @@
     
     // ----------
     submit: function() {
-      alert('Coming Soon!');
+      $.ajax({
+        url: '/api/new-issue',
+        type: 'POST',
+        data: {
+          description: this.$description.val(),
+          title: this.$title.val()
+        },
+        success: function(data) {
+          alert('Success!');
+        },
+        error: function() {
+          alert('Failure!');
+        } 
+      });
     },
     
     // ----------
