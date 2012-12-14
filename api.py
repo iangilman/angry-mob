@@ -19,6 +19,8 @@ def get(method, context):
 		twitter.get_authorization_url(context)
 	elif method == 'new-issue':
 		issues.new_issue(context)
+	elif method == 'issues':
+		issues.get_issues(context)
 			
 	context['response'].headers['Content-Type'] = 'application/json'
 	context['response'].out.write(json.dumps(context['result']))

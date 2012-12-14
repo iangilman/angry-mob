@@ -20,6 +20,7 @@
 
     <script id="Home-template" type="text/template">
       <div>Welcome to Issues!</div>
+      <div class="issues"></div>
     </script>
 
     <script id="NewIssue-template" type="text/template">
@@ -32,6 +33,14 @@
       <div class="row">
         <button class="submit">Report</button>
       </div>
+    </script>
+
+    <script id="issue-list-template" type="text/template">
+      <ul>
+        <% _.each(issues, function(v, i) { %>
+          <li><a href="/issue/<%= v.id %>"><%= v.title %></a></li>
+        <% }); %>
+      </ul>
     </script>
 
   </head>

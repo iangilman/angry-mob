@@ -27,3 +27,16 @@ def new_issue(context):
   issue.title = context['request'].get('title')
   issue.creator = creator
   issue.put()
+
+# ----------
+def get_issues(context):
+  issues = []
+  issue_list = db.GqlQuery("SELECT * FROM Issue")
+  for issue in issue_list:
+    issues.append({
+      'title': issue.title,
+      'description': issue.description,
+      'id': issue.key().id()
+    })
+
+  context['result']['issues'] = issues
