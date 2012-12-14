@@ -26,16 +26,16 @@
         this.showLoggedIn();
       }
       
-      this.$newIssue = $('.new-issue')
-        .click(function(event) {
-          event.preventDefault();
-          self.go('NewIssue');
+      var routes = {
+        Home: '',
+        NewIssue: '/new-issue',
+        Issue: '/issue/:id'
+      };
+      
+      _.each(routes, function(v, k) {
+        Path.map(v + '(/)').to(function() {
+          self.go(k, this.params);
         });
-      
-      this.go('Home');
-      
-      Path.map('/issue/:id').to(function() {
-        self.go('Issue', this.params);
       });
       
       Path.history.listen();
@@ -121,7 +121,7 @@
     // ----------
     showLoggedIn: function() {
       this.$user
-        .text(I.server.data.username + ' ');
+        .text(I.server.data.username);
 
       $('<a href="#">Sign Out</a>')
         .click(function(event) {
