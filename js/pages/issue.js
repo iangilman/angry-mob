@@ -1,9 +1,9 @@
-/*globals I */
+/*globals mob */
 
 (function() {
 
   // ----------
-  var component = I.Pages.Issue = function(config) {
+  var component = mob.Pages.Issue = function(config) {
     var self = this;
     this.$el = config.$el;
     
@@ -13,7 +13,7 @@
         id: config.id
       },
       success: function(data) {
-        var $issue = I.template('issue', data.issue);
+        var $issue = mob.template('issue', data.issue);
         self.$el.append($issue);
       }
     });

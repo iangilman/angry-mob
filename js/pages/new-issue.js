@@ -1,9 +1,9 @@
-/*globals I */
+/*globals mob */
 
 (function() {
 
   // ----------
-  var component = I.Pages.NewIssue = function() {
+  var component = mob.Pages.NewIssue = function() {
     var self = this;
     
     this.$description = $('.description');
@@ -11,10 +11,10 @@
     
     $('.submit')
       .click(function() {
-        if (I.loggedIn()) {
+        if (mob.loggedIn()) {
           self.submit();
         } else {
-          I.logIn({
+          mob.logIn({
             prompt: 'You need to sign in first.',
             callback: function() {
               self.submit();
@@ -27,7 +27,7 @@
   component.prototype = {
     // ----------
     submit: function() {
-      I.spin(true);
+      mob.spin(true);
       $.ajax({
         url: '/api/new-issue',
         type: 'POST',
@@ -36,11 +36,11 @@
           title: this.$title.val()
         },
         success: function(data) {
-          I.spin(false);
-          I.navigate('/');
+          mob.spin(false);
+          mob.navigate('/');
         },
         error: function() {
-          I.spin(false);
+          mob.spin(false);
           alert('Failure!');
         } 
       });

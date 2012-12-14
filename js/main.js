@@ -1,9 +1,9 @@
-/*globals I, Spinner, Path, Modernizr */
+/*globals mob, Spinner, Path, Modernizr */
 
 (function() {
 
   // ----------
-  window.I = {
+  window.mob = {
     Pages: {},
     server: {},
     currentView: null,
@@ -123,7 +123,7 @@
         .click(function() {
           window.open(twitterUrl, "_blank", "width=700,height=500");
           var interval = setInterval(function() {
-            if (I.server.data.username) {
+            if (mob.server.data.username) {
               clearInterval(interval);
               self.showLoggedIn();
               $login.hide();
@@ -138,7 +138,7 @@
     // ----------
     showLoggedIn: function() {
       this.$user
-        .text(I.server.data.username);
+        .text(mob.server.data.username);
 
       $('<a href="#">Sign Out</a>')
         .click(function(event) {
@@ -151,7 +151,7 @@
   
   // ----------
   $(document).ready(function() {
-    I.init();
+    mob.init();
   });
   
 })();

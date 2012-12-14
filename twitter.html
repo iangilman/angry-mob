@@ -7,7 +7,7 @@
 	    window.FromServer = {{ for_client|safe }};
 	    
 	    if (FromServer.code == 'success') {
-  	    var data = window.opener.I.server.data;
+  	    var data = window.opener.mob.server.data;
   	    data.name = FromServer.name;
   	    data.username = FromServer.username;
 	    }
