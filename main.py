@@ -105,9 +105,9 @@ class Twitter(session_module.BaseSessionHandler):
 
 # ----------
 app = webapp2.WSGIApplication([
-  ('/', MainHandler),
   ('/api/(.*)', Api), 
   ('/twitter-callback', Twitter),
   ('/login', LoginHandler),
-  ('/logout', LogoutHandler)
+  ('/logout', LogoutHandler),
+  ('/.*', MainHandler)
 ], config = session_module.myconfig_dict, debug = True)

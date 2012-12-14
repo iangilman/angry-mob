@@ -1,10 +1,10 @@
-/*globals I, Spinner */
+/*globals I, Spinner, Path */
 
 (function() {
 
   // ----------
   window.I = {
-    Views: {},
+    Pages: {},
     server: {},
     currentView: null,
     spinner: null,
@@ -33,21 +33,31 @@
         });
       
       this.go('Home');
+      
+      Path.map('/issue/:id').to(function() {
+        self.go('Issue', this.params);
+      });
+      
+      Path.history.listen();
+      Path.dispatch(document.location.pathname);
     },
     
     // ----------
-    go: function(mode) {
+    go: function(mode, config) {
+      config = config || {};
+      
       var $div = $("<div>")
         .addClass(mode)
-        .append(this.template(mode));
+        .append(this.template(mode + '-page'));
         
       $(".main-content")
         .empty()
         .append($div);
         
       this.mode = mode;
-      if (this.mode in this.Views) {
-        this.currentView = new this.Views[this.mode]();
+      if (this.mode in this.Pages) {
+        config.$el = $div;
+        this.currentView = new this.Pages[this.mode](config);
       }
     },
     

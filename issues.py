@@ -27,6 +27,20 @@ def new_issue(context):
   issue.title = context['request'].get('title')
   issue.creator = creator
   issue.put()
+  context['result']['code'] = 'success'  
+
+# ----------
+def get_issue(context):
+  issue = Issue.get_by_id(int(context['request'].get('id')))
+  if not issue:
+    return
+    
+  context['result']['issue'] = {
+    'title': issue.title,
+    'description': issue.description,
+  }
+
+  context['result']['code'] = 'success'
 
 # ----------
 def get_issues(context):
@@ -40,3 +54,4 @@ def get_issues(context):
     })
 
   context['result']['issues'] = issues
+  context['result']['code'] = 'success'

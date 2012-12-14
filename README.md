@@ -13,6 +13,8 @@ http://blog.iangilman.com/2012/01/issue-tracking-for-real-world.html
 * http://lesscss.org/
 * http://amplifyjs.com/
 * http://jqueryui.com/
+* https://github.com/mtrpcic/pathjs
+* http://fgnass.github.com/spin.js/
 
 # To Do
 

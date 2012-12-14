@@ -3,7 +3,7 @@
 (function() {
 
   // ----------
-  I.Views.NewIssue = function() {
+  var component = I.Pages.NewIssue = function() {
     var self = this;
     
     this.$description = $('.description');
@@ -24,7 +24,7 @@
       });
   };
   
-  I.Views.NewIssue.prototype = {
+  component.prototype = {
     // ----------
     submit: function() {
       I.spin(true);

@@ -3,7 +3,7 @@
 (function() {
 
   // ----------
-  I.Views.Home = function() {
+  var component = I.Pages.Home = function() {
     $.ajax({
       url: '/api/issues',
       success: function(data) {
@@ -13,7 +13,7 @@
     });
   };
   
-  I.Views.Home.prototype = {
+  component.prototype = {
   };
   
 })();

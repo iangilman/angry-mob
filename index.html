@@ -2,28 +2,30 @@
 <html>
   <head>
     <title>Issues</title>
-    <link rel="stylesheet" type="text/css" href="lib/normalize.css">
-    <link rel="stylesheet" type="text/css" href="lib/jquery-ui/smoothness/jquery-ui-1.9.0.custom.min.css">
-    <link rel="stylesheet/less" type="text/css" href="style/main.less">
+    <link rel="stylesheet" type="text/css" href="/lib/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/lib/jquery-ui/smoothness/jquery-ui-1.9.0.custom.min.css">
+    <link rel="stylesheet/less" type="text/css" href="/style/main.less">
     <script src="/lib/jquery-1.8.2.min.js"></script>
     <script src="/lib/jquery-ui/jquery-ui-1.9.0.custom.min.js"></script>
     <script src="/lib/less-1.3.0.min.js"></script>
     <script src="/lib/amplify.min.js"></script>
     <script src="/lib/underscore-min.js"></script>
     <script src="/lib/spin.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/new-issue.js"></script>
-    <script src="js/home.js"></script>
+    <script src="/lib/path.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/pages/new-issue.js"></script>
+    <script src="/js/pages/home.js"></script>
+    <script src="/js/pages/issue.js"></script>
   	<script>
       I.server.data = {{ for_client|safe }};
     </script>
 
-    <script id="Home-template" type="text/template">
+    <script id="Home-page-template" type="text/template">
       <div>Welcome to Issues!</div>
       <div class="issues"></div>
     </script>
 
-    <script id="NewIssue-template" type="text/template">
+    <script id="NewIssue-page-template" type="text/template">
       <div class="row">
         <input type="text" class="title">
       </div>
@@ -35,12 +37,21 @@
       </div>
     </script>
 
+    <script id="Issue-page-template" type="text/template">
+      <div></div>
+    </script>
+    
     <script id="issue-list-template" type="text/template">
       <ul>
         <% _.each(issues, function(v, i) { %>
           <li><a href="/issue/<%= v.id %>"><%= v.title %></a></li>
         <% }); %>
       </ul>
+    </script>
+
+    <script id="issue-template" type="text/template">
+      <div><%= title %></div>
+      <div><%= description %></div>
     </script>
 
   </head>
