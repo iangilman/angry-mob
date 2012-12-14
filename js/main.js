@@ -106,7 +106,9 @@
       var $login = $('.login').show();
       
       if (config.prompt) {
-        $login.find('.prompt').text(config.prompt);
+        $login.find('.prompt')
+          .text(config.prompt)
+          .show();
       }
       
       var twitterUrl = "";

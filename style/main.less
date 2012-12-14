@@ -1,3 +1,16 @@
+.box-shadow(@config) {
+  -webkit-box-shadow: @config; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  box-shadow: @config; /* Opera 10.5, IE9+, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+.border-radius(@config) {
+  -webkit-border-radius: @config; /* Safari 3-4, iOS 1-3.2, Android ≤1.6 */
+  border-radius: @config; /* Opera 10.5, IE9+, Safari 5, Chrome, Firefox 4+, iOS 4, Android 2.1+ */
+
+  /* useful if you don't want a bg color from leaking outside the border: */
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+
 .left {
   float: left;
 }
@@ -37,19 +50,47 @@
 }
 
 .login {
+  @width: 300px;
   display: none;
   position: fixed;
   top: 40px;
-  right: 40px;
-  width: 500px;
-  height: 350px;
+  left: 50%;
+  margin-left: @width * -0.5;
+  width: @width;
   background: white;
-  border: 1px solid black;
+  border: 1px solid #ccc;
+  .box-shadow(7px 7px 10px 0px rgba(0, 0, 0, 0.2));
   
+  & > .inner {
+    padding: 15px;
+  }
+  
+  .buttons {
+    text-align: center;
+  }
+  
+  .prompt {
+    display: none;
+    margin-bottom: 20px;
+  }
+
   .twitter {
+    display: inline-block;
     padding: 10px;
     background: white;
-    border: 1px solid black;
+    border: 1px solid #ccc;
+    .border-radius(6px);
     cursor: pointer;
+    
+    &:hover,
+    &:active {
+      background: #eee;
+    }
+  }
+  
+  .note {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #888;
   }
 }
