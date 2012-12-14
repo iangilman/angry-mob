@@ -103,7 +103,7 @@
       var self = this;
 
       config = config || {};
-      var $login = $('.login').show();
+      var $login = $('.login');
       
       if (config.prompt) {
         $login.find('.prompt')
@@ -112,12 +112,17 @@
       }
       
       var twitterUrl = "";
+      mob.spin(true);
       $.ajax({
         url: "/api/get-twitter-url", 
         success: function(data) {
+          mob.spin(false);
           twitterUrl = data.url;
+          $login.show();
         }, 
         error: function() {
+          mob.spin(false);
+          alert('Unable to get login URL');
         }
       });
     

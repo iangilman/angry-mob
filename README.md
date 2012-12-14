@@ -19,8 +19,8 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 
 # To Do
 
+* Standard function for figuring out if an API call was successful, etc.
 * Other login methods (Facebook, email)
-* Show a list of submitted reports
 * When you sign out, clean out the whole session
-* Don't do twitter sign in until after the twitter url comes back
 * Support hash urls in old browsers
+* Better error reporting than alert
