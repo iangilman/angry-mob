@@ -1,4 +1,4 @@
-/*globals I, Spinner, Path */
+/*globals I, Spinner, Path, Modernizr */
 
 (function() {
 
@@ -26,6 +26,13 @@
         this.showLoggedIn();
       }
       
+      $(document).on("click", "a", function(event) {
+        if (Modernizr.history) {
+          event.preventDefault();
+          Path.history.pushState({}, '', $(this).attr('href'));
+        }
+      });
+      
       var routes = {
         Home: '',
         NewIssue: '/new-issue',
@@ -40,6 +47,14 @@
       
       Path.history.listen();
       Path.dispatch(document.location.pathname);
+    },
+    
+    navigate: function(path) {
+      if (Modernizr.history) {
+        Path.history.pushState({}, '', path);
+      } else {
+        location.href = path;
+      }
     },
     
     // ----------
@@ -86,6 +101,8 @@
     // ----------
     logIn: function(config) {
       var self = this;
+
+      config = config || {};
       var $login = $('.login').show();
       
       if (config.prompt) {

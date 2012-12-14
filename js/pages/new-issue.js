@@ -1,4 +1,4 @@
-/*globals I, Path */
+/*globals I */
 
 (function() {
 
@@ -37,7 +37,7 @@
         },
         success: function(data) {
           I.spin(false);
-          Path.history.pushState({}, '', '/');
+          I.navigate('/');
         },
         error: function() {
           I.spin(false);

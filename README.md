@@ -15,11 +15,10 @@ http://blog.iangilman.com/2012/01/issue-tracking-for-real-world.html
 * http://jqueryui.com/
 * https://github.com/mtrpcic/pathjs
 * http://fgnass.github.com/spin.js/
+* http://modernizr.com/
 
 # To Do
 
-* Show list of issues
-* Show individual issue
 * Other login methods (Facebook, email)
 * Show a list of submitted reports
 * When you sign out, clean out the whole session
