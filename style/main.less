@@ -1,3 +1,4 @@
+// Mixins
 .box-shadow(@config) {
   -webkit-box-shadow: @config; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
   box-shadow: @config; /* Opera 10.5, IE9+, Firefox 4+, Chrome 6+, iOS 5 */
@@ -11,6 +12,7 @@
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }
 
+// General
 .left {
   float: left;
 }
@@ -19,6 +21,12 @@
   float: right;
 }
 
+.note {
+  font-size: 12px;
+  color: #888;
+}
+
+// Regions
 .header {
   overflow: hidden;
   padding: 15px;
@@ -43,10 +51,6 @@
   max-width: 1600px;
   width: 80%;
   margin: 20px auto 0 auto;
-  
-  .row {
-    margin: 10px 0;
-  }
 }
 
 .login {
@@ -87,10 +91,41 @@
       background: #eee;
     }
   }
-  
+
   .note {
     margin-top: 20px;
-    font-size: 12px;
-    color: #888;
   }
+}
+
+.NewIssue {
+  table {
+    width: 100%;
+    
+    th,
+    td {
+      padding: 10px;
+    } 
+         
+    th {
+      text-align: left;
+      vertical-align: top;
+    }
+    
+    td {
+      width: 100%;
+    }
+    
+    input {
+      width: 100%;
+    }
+    
+    textarea {
+      width: 100%;
+      height: 200px;
+    }
+    
+    .note {
+      margin-top: 10px;
+    }
+  }  
 }

@@ -27,17 +27,29 @@
     </script>
 
     <script id="NewIssue-page-template" type="text/template">
-      <div class="row">
-        <input type="text" class="title">
-      </div>
-      <div class="row">
-        <textarea class="description"></textarea>
-      </div>
-      <div class="row">
-        <button class="submit">Report</button>
-      </div>
+      <table>
+        <tr>
+          <th>Title</th>
+          <td>
+            <input type="text" class="title">
+          </td>
+        </tr>
+        <tr>
+          <th>Description</th>
+          <td>
+            <textarea class="description"></textarea>
+            <div class="note">We don't yet support any HTML or markup.</div>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            <button class="submit">Report</button>
+          </td>
+        </tr>
+      </table>
     </script>
-
+    
     <script id="Issue-page-template" type="text/template">
       <div></div>
     </script>
