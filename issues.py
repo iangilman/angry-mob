@@ -39,6 +39,8 @@ def get_issue(context):
   context['result']['issue'] = {
     'title': issue.title,
     'description': issue.description,
+    'creator_name': issue.creator.name,
+    'creation_date': issue.creation_date.isoformat()
   }
 
   context['result']['code'] = 'success'

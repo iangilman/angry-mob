@@ -13,7 +13,9 @@
         id: config.id
       },
       success: function(data) {
-        var $issue = mob.template('issue', data.issue);
+        var config = data.issue;
+        config.display_date = new Date(config.creation_date).toDateString();
+        var $issue = mob.template('issue', config);
         self.$el.append($issue);
       }
     });

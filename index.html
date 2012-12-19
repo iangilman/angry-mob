@@ -63,8 +63,9 @@
     </script>
 
     <script id="issue-template" type="text/template">
-      <div><%= title %></div>
-      <div><%= description %></div>
+      <h2><%= title %></h2>
+      <div>Reported by <%= creator_name %> on <%= display_date %></div>
+      <div class="description"><%= description %></div>
     </script>
 
   </head>
