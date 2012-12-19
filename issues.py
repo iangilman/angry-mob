@@ -3,6 +3,7 @@
 
 from google.appengine.ext import db
 
+import cgi
 import people
 
 # ----------
@@ -23,8 +24,8 @@ def new_issue(context):
     return
     
   issue = Issue()
-  issue.description = context['request'].get('description')
-  issue.title = context['request'].get('title')
+  issue.description = cgi.escape(context['request'].get('description'))
+  issue.title = cgi.escape(context['request'].get('title'))
   issue.creator = creator
   issue.put()
   context['result']['code'] = 'success'  
