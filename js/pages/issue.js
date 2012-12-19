@@ -14,7 +14,6 @@
       },
       success: function(data) {
         var config = data.issue;
-        config.display_date = new Date(config.creation_date).toDateString();
         var $issue = mob.template('issue', config);
         self.$el.append($issue);
       }

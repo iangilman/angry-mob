@@ -94,6 +94,11 @@
     },
 
     // ----------
+    displayDate: function(isoDate) {
+      return new Date(isoDate).toDateString();
+    },
+    
+    // ----------
     loggedIn: function() {
       return !!this.server.data.username;
     },

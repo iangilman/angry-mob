@@ -52,7 +52,8 @@ def get_issues(context):
   for issue in issue_list:
     issues.append({
       'title': issue.title,
-      'description': issue.description,
+      'creator_name': issue.creator.name,
+      'creation_date': issue.creation_date.isoformat(),
       'id': issue.key().id()
     })
 

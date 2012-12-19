@@ -19,6 +19,11 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 
 # To Do
 
+* Comment threads
+* Deleting and editing
+* Tags
+* State
+* Owner
 * Standard function for figuring out if an API call was successful, etc.
 * Other login methods (Facebook, email)
 * When you sign out, clean out the whole session
