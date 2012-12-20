@@ -99,6 +99,45 @@
     },
     
     // ----------
+    request: function(config) {
+      var self = this;
+      
+      var handleError = function(code) {
+        alert(code); // Do something fancier
+        if (config.error) {
+          config.error(code);
+        }
+      };
+      
+      if (config.spin) {
+        this.spin(true);
+      }
+      
+      $.ajax({
+        url: '/api/' + config.method,
+        data: config.content,
+        type: 'POST',
+        success: function(data) {          
+          if (!data || data.code != 'success') {
+            handleError(data && data.code ? data.code : 'failure');
+          }
+          
+          if (config.success) {
+            config.success(data);
+          }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          handleError(errorThrown || textStatus || 'error');
+        },
+        complete: function() {
+          if (config.spin) {
+            self.spin(false);
+          }
+        }
+      });
+    },
+    
+    // ----------
     loggedIn: function() {
       return !!this.server.data.username;
     },
@@ -117,16 +156,14 @@
       }
       
       var twitterUrl = "";
-      mob.spin(true);
-      $.ajax({
-        url: "/api/get-twitter-url", 
+      this.request({
+        method: "get-twitter-url",
+        spin: true,
         success: function(data) {
-          mob.spin(false);
           twitterUrl = data.url;
           $login.show();
         }, 
         error: function() {
-          mob.spin(false);
           alert('Unable to get login URL');
         }
       });

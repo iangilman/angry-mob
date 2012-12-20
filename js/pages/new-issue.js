@@ -27,21 +27,15 @@
   component.prototype = {
     // ----------
     submit: function() {
-      mob.spin(true);
-      $.ajax({
-        url: '/api/new-issue',
-        type: 'POST',
-        data: {
+      mob.request({
+        method: 'new-issue',
+        spin: true,
+        content: {
           description: this.$description.val(),
           title: this.$title.val()
         },
         success: function(data) {
-          mob.spin(false);
           mob.navigate('/');
-        },
-        error: function() {
-          mob.spin(false);
-          alert('Failure!');
         } 
       });
     }

@@ -7,20 +7,37 @@
     var self = this;
     this.$el = config.$el;
     
-    $.ajax({
-      url: '/api/get-issue',
-      data: {
+    mob.request({
+      method: 'get-issue',
+      content: {
         id: config.id
       },
       success: function(data) {
-        var config = data.issue;
-        var $issue = mob.template('issue', config);
-        self.$el.append($issue);
+        self.render(data.issue);
       }
     });
   };
   
   component.prototype = {
+    // ----------
+    render: function(data) {
+      var self = this;
+      
+      var $issue = mob.template('issue', data);
+      this.$el.append($issue);
+      this.$el.find('button.comment')
+        .click(function() {
+          mob.request({
+            method: 'create-comment',
+            spin: true,
+            content: {
+              comment: self.$el.find('textarea.comment').val()
+            },
+            success: function() {
+            }
+          });
+        });
+    }
   };
   
 })();

@@ -4,8 +4,8 @@
 
   // ----------
   var component = mob.Pages.Home = function() {
-    $.ajax({
-      url: '/api/issues',
+    mob.request({
+      method: 'issues',
       success: function(data) {
         var $list = mob.template('issue-list', data);
         $('.issues').append($list);
