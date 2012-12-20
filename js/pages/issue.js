@@ -6,11 +6,12 @@
   var component = mob.Pages.Issue = function(config) {
     var self = this;
     this.$el = config.$el;
+    this.id = config.id;
     
     mob.request({
       method: 'get-issue',
       content: {
-        id: config.id
+        id: this.id
       },
       success: function(data) {
         self.render(data.issue);
@@ -31,7 +32,8 @@
             method: 'create-comment',
             spin: true,
             content: {
-              comment: self.$el.find('textarea.comment').val()
+              comment: self.$el.find('textarea.comment').val(),
+              issue_id: self.id
             },
             success: function() {
             }

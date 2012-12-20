@@ -14,6 +14,10 @@ class Issue(db.Model):
   creator = db.ReferenceProperty(people.Person)
   
 # ----------
+def get(db_id):
+  return Issue.get_by_id(db_id)
+
+# ----------
 def new_issue(context):
   creator_id = context['session']['person_id']
   if not creator_id:

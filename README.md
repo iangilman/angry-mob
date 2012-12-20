@@ -19,6 +19,7 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 
 # To Do
 
+* Don't allow saving if fields are empty
 * Comment threads
 * Deleting and editing
 * Tags
