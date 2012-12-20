@@ -44,7 +44,7 @@
       mob.request({
         method: 'get-issue-comments',
         content: {
-          id: this.id
+          issue_id: this.id
         },
         success: function(data) {
           self.renderComments(data);
@@ -65,7 +65,7 @@
       var $comment = this.$el.find('textarea.comment');
       var body = $.trim($comment.val());
       if (!body) {
-        alert('Can\'t post blank comment');
+        mob.error('Can\'t post blank comment');
         return;
       }
       

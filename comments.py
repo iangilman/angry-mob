@@ -49,8 +49,16 @@ def new_comment(context):
 
 # ----------
 def get_issue_comments(context):
+  issue_id = int(context['request'].get('issue_id'))
+  if not issue_id:
+    return
+
+  issue = issues.get(issue_id)
+  if not issue:
+    return
+    
   comments = []
-  comment_list = db.GqlQuery("SELECT * FROM Comment")
+  comment_list = db.GqlQuery("SELECT * FROM Comment WHERE issue = :1", issue)
   for comment in comment_list:
     comments.append({
       'body': comment.body,

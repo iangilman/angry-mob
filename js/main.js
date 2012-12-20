@@ -103,7 +103,7 @@
       var self = this;
       
       var handleError = function(code) {
-        alert(code); // Do something fancier
+        self.error(code); // Do something fancier
         if (config.error) {
           config.error(code);
         }
@@ -138,6 +138,12 @@
     },
     
     // ----------
+    error: function(text) {
+      /*globals alert */
+      alert(text);
+    },
+
+    // ----------
     loggedIn: function() {
       return !!this.server.data.username;
     },
@@ -164,7 +170,7 @@
           $login.show();
         }, 
         error: function() {
-          alert('Unable to get login URL');
+          self.error('Unable to get login URL');
         }
       });
     

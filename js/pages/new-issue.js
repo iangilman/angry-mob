@@ -34,7 +34,7 @@
     submit: function() {
       var title = $.trim(this.$title.val());
       if (!title) {
-        alert('You at least need a title');
+        mob.error('You at least need a title');
         return;
       }
 
