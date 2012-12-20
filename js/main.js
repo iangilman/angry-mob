@@ -192,7 +192,7 @@
       $('<a href="#">Sign Out</a>')
         .click(function(event) {
           event.preventDefault();
-          location.href = 'logout';
+          location.href = '/logout';
         })
         .appendTo(this.$user);
     }

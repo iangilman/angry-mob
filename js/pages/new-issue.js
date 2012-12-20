@@ -9,6 +9,11 @@
     this.$description = $('.description');
     this.$title = $('.title');
     
+    _.defer(function() {
+      self.$title
+        .focus();
+    });
+
     $('.submit')
       .click(function() {
         if (mob.loggedIn()) {
@@ -27,15 +32,21 @@
   component.prototype = {
     // ----------
     submit: function() {
+      var title = $.trim(this.$title.val());
+      if (!title) {
+        alert('You at least need a title');
+        return;
+      }
+
       mob.request({
         method: 'new-issue',
         spin: true,
         content: {
           description: this.$description.val(),
-          title: this.$title.val()
+          title: title
         },
         success: function(data) {
-          mob.navigate('/');
+          mob.navigate('/issue/' + data.id);
         } 
       });
     }

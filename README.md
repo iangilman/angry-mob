@@ -19,20 +19,17 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 
 # To Do
 
-* Don't allow saving if fields are empty
-* Force login for commenting
 * Get only comments for the current issue
-* Actually display the comments on issue page load
-* Display comment on comment post
-* Comment threads
 * Deleting and editing
 * Tags
 * State
 * Owner
-* Focus title on new issue
+* Region
 * User pages
+* Email notifications
+
+* Validate forms before forcing login?
 * Only show 10 most recent issues on front page
-* Standard function for figuring out if an API call was successful, etc.
 * Other login methods (Facebook, email)
 * When you sign out, clean out the whole session
 * Support hash urls in old browsers

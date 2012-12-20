@@ -37,6 +37,14 @@ def new_comment(context):
   comment.creator = creator
   comment.issue = issue
   comment.put()
+  
+  context['result']['comment'] = {
+    'body': comment.body,
+    'creator_name': comment.creator.name,
+    'creation_date': comment.creation_date.isoformat(),
+    'id': comment.key().id()
+  }
+
   context['result']['code'] = 'success'  
 
 # ----------

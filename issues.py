@@ -32,6 +32,7 @@ def new_issue(context):
   issue.title = cgi.escape(context['request'].get('title'))
   issue.creator = creator
   issue.put()
+  context['result']['id'] = issue.key().id()  
   context['result']['code'] = 'success'  
 
 # ----------
