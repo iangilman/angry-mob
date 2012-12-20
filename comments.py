@@ -38,3 +38,18 @@ def new_comment(context):
   comment.issue = issue
   comment.put()
   context['result']['code'] = 'success'  
+
+# ----------
+def get_issue_comments(context):
+  comments = []
+  comment_list = db.GqlQuery("SELECT * FROM Comment")
+  for comment in comment_list:
+    comments.append({
+      'body': comment.body,
+      'creator_name': comment.creator.name,
+      'creation_date': comment.creation_date.isoformat(),
+      'id': comment.key().id()
+    })
+
+  context['result']['comments'] = comments
+  context['result']['code'] = 'success'

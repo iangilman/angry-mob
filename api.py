@@ -26,6 +26,8 @@ def get(method, context):
 		issues.get_issue(context)
 	elif method == 'create-comment':
 		comments.new_comment(context)
+	elif method == 'get-issue-comments':
+		comments.get_issue_comments(context)
 			
 	context['response'].headers['Content-Type'] = 'application/json'
 	context['response'].out.write(json.dumps(context['result']))

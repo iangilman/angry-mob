@@ -39,6 +39,21 @@
             }
           });
         });
+        
+      mob.request({
+        method: 'get-issue-comments',
+        content: {
+          id: this.id
+        },
+        success: function(data) {
+          self.renderComments(data.comments);
+        }
+      });
+    },
+
+    // ----------
+    renderComments: function(data) {
+      this.$el.append(mob.template('comment-list', data));
     }
   };
   
