@@ -28,6 +28,8 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 * User pages
 * Email notifications
 
+* Sessions should last longer
+* When signing in with Twitter, shouldn't have to reauthorize every time
 * Validate forms before forcing login?
 * Only show 10 most recent issues on front page
 * Other login methods (Facebook, email)
