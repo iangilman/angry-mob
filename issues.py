@@ -36,6 +36,25 @@ def new_issue(context):
   context['result']['code'] = 'success'  
 
 # ----------
+def update_issue(context):
+  issue = Issue.get_by_id(int(context['request'].get('id')))
+  if not issue:
+    return
+
+  creator_id = context['session']['person_id']
+  if not creator_id:
+    return
+    
+  if issue.creator.key().id() != creator_id:
+    return
+    
+  issue.description = cgi.escape(context['request'].get('description'))
+  issue.title = cgi.escape(context['request'].get('title'))
+  issue.put()
+  context['result']['id'] = issue.key().id()  
+  context['result']['code'] = 'success'  
+
+# ----------
 def get_issue(context):
   issue = Issue.get_by_id(int(context['request'].get('id')))
   if not issue:

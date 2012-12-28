@@ -62,6 +62,7 @@
         method: 'update-issue',
         spin: true,
         content: {
+          id: this.id,
           description: this.$description.val(),
           title: title
         },
