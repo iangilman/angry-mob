@@ -27,6 +27,12 @@
       var $issue = mob.template('issue', data);
       this.$el.append($issue);
       
+      this.$edit = this.$el.find('.edit')
+        .toggle(data.creator.id == mob.server.data.user_id)
+        .click(function() {
+          mob.navigate('/issue/' + self.id + '/edit');
+        });
+      
       this.$el.find('button.comment')
         .click(function() {
           if (mob.loggedIn()) {

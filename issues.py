@@ -44,8 +44,11 @@ def get_issue(context):
   context['result']['issue'] = {
     'title': issue.title,
     'description': issue.description,
-    'creator_name': issue.creator.name,
-    'creation_date': issue.creation_date.isoformat()
+    'creation_date': issue.creation_date.isoformat(),
+    'creator': {
+      'name': issue.creator.name,
+      'id': issue.creator.key().id()
+    }
   }
 
   context['result']['code'] = 'success'
@@ -57,9 +60,12 @@ def get_issues(context):
   for issue in issue_list:
     issues.append({
       'title': issue.title,
-      'creator_name': issue.creator.name,
       'creation_date': issue.creation_date.isoformat(),
-      'id': issue.key().id()
+      'id': issue.key().id(),
+      'creator': {
+        'name': issue.creator.name,
+        'id': issue.creator.key().id()
+      }
     })
 
   context['result']['issues'] = issues

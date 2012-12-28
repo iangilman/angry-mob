@@ -1,9 +1,9 @@
-/*globals mob, Spinner, Path, Modernizr */
+/*globals mob, Spinner, Path, Modernizr, zot */
 
 (function() {
 
   // ----------
-  window.mob = {
+  window.mob = _.extend({
     Pages: {},
     server: {},
     currentView: null,
@@ -36,6 +36,7 @@
       var routes = {
         Home: '',
         NewIssue: '/new-issue',
+        EditIssue: '/issue/:id/edit',
         Issue: '/issue/:id'
       };
       
@@ -202,7 +203,7 @@
         })
         .appendTo(this.$user);
     }
-  };
+  }, zot.subscribable);
   
   // ----------
   $(document).ready(function() {

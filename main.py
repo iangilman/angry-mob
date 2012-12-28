@@ -19,7 +19,8 @@ class MainHandler(session_module.BaseSessionHandler):
   def get(self):
     for_client = {
       'name': self.session.get('name'),
-      'username': self.session.get('username')
+      'username': self.session.get('username'),
+      'user_id': self.session.get('person_id')
     }
     
     path = os.path.join(os.path.dirname(__file__), 'index.html')
@@ -36,7 +37,9 @@ class LoginHandler(session_module.BaseSessionHandler):
 # ----------
 class LogoutHandler(session_module.BaseSessionHandler):
   def get(self):
-    self.session['username'] = None
+    # TODO: Actually remove the session rather than cleaning it out?
+    for k in self.session.keys():
+      del self.session[k]
     path = os.path.join(os.path.dirname(__file__), 'login.html')
     self.response.out.write(template.render(path, {}))
 
@@ -91,10 +94,11 @@ class Twitter(session_module.BaseSessionHandler):
     self.session['twitter_auth_token'] = auth_token
     self.session['twitter_auth_verifier'] = auth_verifier
     self.session['person_id'] = person.key().id()
-    for_client['name'] = person.name
     self.session['name'] = person.name
-    for_client['username'] = person.username
     self.session['username'] = person.username
+    for_client['name'] = person.name
+    for_client['username'] = person.username
+    for_client['user_id'] = person.key().id()
 
     template_values = {
       "for_client": json.dumps(for_client)

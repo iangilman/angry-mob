@@ -16,15 +16,16 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 * https://github.com/mtrpcic/pathjs
 * http://fgnass.github.com/spin.js/
 * http://modernizr.com/
+* https://github.com/iangilman/zot
 
 # To Do
 
-* Get only comments for the current issue
 * Deleting and editing
 * Tags
 * State
 * Owner
 * Region
+
 * User pages
 * Email notifications
 
@@ -33,6 +34,6 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 * Validate forms before forcing login?
 * Only show 10 most recent issues on front page
 * Other login methods (Facebook, email)
-* When you sign out, clean out the whole session
 * Support hash urls in old browsers
 * Better error reporting than alert
+* If you mob.navigate to a place that doesn't exist, nothing happens; should 404. Is this also a problem with anchor tags?

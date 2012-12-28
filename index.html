@@ -13,6 +13,8 @@
     <script src="/lib/spin.min.js"></script>
     <script src="/lib/path.js"></script>
     <script src="/lib/modernizr.custom.js"></script>
+    <script src="/lib/zot/zot.js"></script>
+    <script src="/lib/zot/zot.subscribable.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/pages/new-issue.js"></script>
     <script src="/js/pages/home.js"></script>
@@ -57,7 +59,7 @@
     <script id="issue-list-template" type="text/template">
       <ul>
         <% _.each(issues, function(v, i) { %>
-          <li><a href="/issue/<%= v.id %>"><%= v.title %></a> - <%= v.creator_name %>, <%= mob.displayDate(v.creation_date) %></li>
+          <li><a href="/issue/<%= v.id %>"><%= v.title %></a> - <%= v.creator.name %>, <%= mob.displayDate(v.creation_date) %></li>
         <% }); %>
       </ul>
     </script>
@@ -70,8 +72,9 @@
     </script>
 
     <script id="issue-template" type="text/template">
+      <button class="right edit">Edit</button>
       <h2><%= title %></h2>
-      <div class="byline">Reported by <%= creator_name %>, <%= mob.displayDate(creation_date) %></div>
+      <div class="byline">Reported by <%= creator.name %>, <%= mob.displayDate(creation_date) %></div>
       <div class="description"><%= description %></div>
       <div class="comments"></div>
       <p>Add a comment:</p>
