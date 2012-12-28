@@ -32,6 +32,11 @@
         .click(function() {
           mob.navigate('/issue/' + self.id + '/edit');
         });
+        
+      mob.subscribe(this, 'loggedIn', function() {
+        self.$edit
+          .toggle(data.creator.id == mob.server.data.user_id);
+      });
       
       this.$el.find('button.comment')
         .click(function() {

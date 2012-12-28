@@ -186,6 +186,7 @@
               if (config.callback) {
                 config.callback();
               }
+              self._publish('loggedIn');
             }
           }, 500);
         });

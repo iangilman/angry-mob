@@ -19,6 +19,7 @@
     <script src="/js/pages/new-issue.js"></script>
     <script src="/js/pages/home.js"></script>
     <script src="/js/pages/issue.js"></script>
+    <script src="/js/pages/edit-issue.js"></script>
   	<script>
       mob.server.data = {{ for_client|safe }};
     </script>
@@ -56,6 +57,10 @@
       <div></div>
     </script>
     
+    <script id="EditIssue-page-template" type="text/template">
+      <div></div>
+    </script>
+    
     <script id="issue-list-template" type="text/template">
       <ul>
         <% _.each(issues, function(v, i) { %>
@@ -82,6 +87,31 @@
       <div>
         <button class="comment">Comment</button>
       </div>
+    </script>
+
+    <script id="edit-issue-template" type="text/template">
+      <table>
+        <tr>
+          <th>Title</th>
+          <td>
+            <input type="text" class="title" value="<%= title %>">
+          </td>
+        </tr>
+        <tr>
+          <th>Description</th>
+          <td>
+            <textarea class="description"><%= description %></textarea>
+            <div class="note">We don't yet support any HTML or markup.</div>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            <button class="submit">Save</button>
+            <button class="cancel">Cancel</button>
+          </td>
+        </tr>
+      </table>
     </script>
 
   </head>
