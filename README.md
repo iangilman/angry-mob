@@ -20,7 +20,6 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 
 # To Do
 
-* Deleting and editing
 * Tags
 * State
 * Owner
@@ -28,6 +27,7 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 
 * User pages
 * Email notifications
+* Feed/wall of all changes
 
 * Sessions should last longer
 * When signing in with Twitter, shouldn't have to reauthorize every time
@@ -37,3 +37,4 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 * Support hash urls in old browsers
 * Better error reporting than alert
 * If you mob.navigate to a place that doesn't exist, nothing happens; should 404. Is this also a problem with anchor tags?
+* Deleting issues?
