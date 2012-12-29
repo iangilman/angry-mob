@@ -52,6 +52,8 @@
     
     // ----------
     submit: function() {
+      var self = this;
+      
       var title = $.trim(this.$title.val());
       if (!title) {
         mob.error('You at least need a title');
@@ -67,7 +69,7 @@
           title: title
         },
         success: function(data) {
-          mob.navigate('/issue/' + data.id);
+          mob.navigate('/issue/' + self.id);
         } 
       });
     }

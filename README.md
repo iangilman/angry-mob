@@ -21,7 +21,6 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 # To Do
 
 * Tags
-* State
 * Owner
 * Region
 
@@ -38,3 +37,6 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 * Better error reporting than alert
 * If you mob.navigate to a place that doesn't exist, nothing happens; should 404. Is this also a problem with anchor tags?
 * Deleting issues?
+* Edit: only highlight save button after you've made a change
+* Unsubscribe from event in issue.js's destroy()
+* Issue editor should be its own subview

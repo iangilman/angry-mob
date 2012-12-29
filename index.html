@@ -77,8 +77,11 @@
     </script>
 
     <script id="issue-template" type="text/template">
+      <button class="right close">Close</button>
+      <button class="right reopen">Reopen</button>
       <button class="right edit">Edit</button>
       <h2><%= title %></h2>
+      <div class="byline">Status: <%= status_text %></div>
       <div class="byline">Reported by <%= creator.name %>, <%= mob.displayDate(creation_date) %></div>
       <div class="description"><%= description %></div>
       <div class="comments"></div>

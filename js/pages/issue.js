@@ -17,6 +17,8 @@
         self.render(data.issue);
       }
     });
+
+    mob.subscribe(this, 'loggedIn', _.bind(this._updateButtons, this));
   };
   
   component.prototype = {
@@ -24,19 +26,33 @@
     render: function(data) {
       var self = this;
       
+      this.creatorId = data.creator.id;
+      this.status = data.status;
+      
+      var statusText = {};
+      statusText[mob.STATUS_OPEN] = 'Open';
+      statusText[mob.STATUS_CLOSED] = 'Closed';
+
+      data.status_text = statusText[data.status] || 'Unknown';
       var $issue = mob.template('issue', data);
-      this.$el.append($issue);
+      this.$el.html($issue);
       
       this.$edit = this.$el.find('.edit')
-        .toggle(data.creator.id == mob.server.data.user_id)
         .click(function() {
           mob.navigate('/issue/' + self.id + '/edit');
         });
+
+      this.$close = this.$el.find('.close')
+        .click(function() {
+          self.changeStatus(mob.STATUS_CLOSED);
+        });
         
-      mob.subscribe(this, 'loggedIn', function() {
-        self.$edit
-          .toggle(data.creator.id == mob.server.data.user_id);
-      });
+      this.$reopen = this.$el.find('.reopen')
+        .click(function() {
+          self.changeStatus(mob.STATUS_OPEN);
+        });
+        
+      this._updateButtons();
       
       this.$el.find('button.comment')
         .click(function() {
@@ -97,6 +113,35 @@
           });
         }
       });
+    },
+
+    // ----------
+    changeStatus: function(status) {
+      var self = this;
+      
+      mob.request({
+        method: 'update-issue',
+        spin: true,
+        content: {
+          id: this.id,
+          status: status
+        },
+        success: function(data) {
+          self.render(data.issue);
+        } 
+      });
+    },
+
+    // ----------
+    _updateButtons: function() {
+      if (!this.$edit) {
+        return;
+      }
+      
+      var isCreator = (this.creatorId == mob.server.data.user_id);
+      this.$edit.toggle(isCreator);
+      this.$close.toggle(isCreator && this.status == mob.STATUS_OPEN);
+      this.$reopen.toggle(isCreator && this.status == mob.STATUS_CLOSED);
     }
   };
   

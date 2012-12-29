@@ -9,6 +9,8 @@
     currentView: null,
     spinner: null,
     mode: '',
+    STATUS_OPEN: 1,
+    STATUS_CLOSED: 2,
     
     // ----------
     init: function() {
