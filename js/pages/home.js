@@ -7,8 +7,20 @@
     mob.request({
       method: 'issues',
       success: function(data) {
-        var $list = mob.template('issue-list', data);
-        $('.issues').append($list);
+        var open = {
+          issues: _.where(data.issues, {
+            status: mob.STATUS_OPEN
+          })
+        };
+        
+        var closed = {
+          issues: _.where(data.issues, {
+            status: mob.STATUS_CLOSED
+          })
+        };
+        
+        $('.open-issues').append(mob.template('issue-list', open));
+        $('.closed-issues').append(mob.template('issue-list', closed));
       }
     });
   };
