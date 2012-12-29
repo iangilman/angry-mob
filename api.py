@@ -4,6 +4,7 @@ from django.utils import simplejson as json
 
 import comments
 import issues
+import tags
 import twitter
 import util
 
@@ -23,7 +24,7 @@ def get(method, context):
   elif method == 'issues':
     issues.get_issues(context)
   elif method == 'get-issue':
-    issues.get_issue(context)
+    get_issue(context)
   elif method == 'create-comment':
     comments.new_comment(context)
   elif method == 'get-issue-comments':
@@ -33,3 +34,16 @@ def get(method, context):
       
   context['response'].headers['Content-Type'] = 'application/json'
   context['response'].out.write(json.dumps(context['result']))
+
+# ----------
+def get_issue(context):
+  issue_id = int(context['request'].get('id'))
+  issue = issues.Issue.get_by_id(issue_id)
+  if not issue:
+    return
+    
+  output_issue = issues.as_dictionary(issue, True)
+  output_issue['tags'] = tags.get_for_issue(issue)
+  
+  context['result']['issue'] = output_issue
+  context['result']['code'] = 'success'

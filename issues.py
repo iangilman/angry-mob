@@ -70,15 +70,6 @@ def update_issue(context):
   context['result']['code'] = 'success'  
 
 # ----------
-def get_issue(context):
-  issue = Issue.get_by_id(int(context['request'].get('id')))
-  if not issue:
-    return
-    
-  context['result']['issue'] = as_dictionary(issue, True)
-  context['result']['code'] = 'success'
-
-# ----------
 def get_issues(context):
   issues = []
   issue_list = db.GqlQuery("SELECT * FROM Issue")
