@@ -45,7 +45,7 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 
 * http://www.treesny.org/citizenpruner
 * http://sf0.org/
-* http://www.fixmytransport.com/ from mysociety.org - code at github.com/mysociety
+* http://www.fixmytransport.com/ from http://mysociety.org - code at http://github.com/mysociety
 * http://www.fixmystreet.com/
 * http://www.civicplus.com/
 * http://ushahidi.com/
