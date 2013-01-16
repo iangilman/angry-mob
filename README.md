@@ -40,3 +40,15 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 * Edit: only highlight save button after you've made a change
 * Unsubscribe from event in issue.js's destroy()
 * Issue editor should be its own subview
+
+# Related Projects
+
+* http://www.treesny.org/citizenpruner
+* http://sf0.org/
+* http://www.fixmytransport.com/ from mysociety.org - code at github.com/mysociety
+* http://www.fixmystreet.com/
+* http://www.civicplus.com/
+* http://ushahidi.com/
+* https://getsatisfaction.com/
+* http://www.portlandonline.com/bts/index.cfm?c=53613
+* https://bugzilla.mozilla.org/
