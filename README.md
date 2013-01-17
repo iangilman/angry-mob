@@ -52,3 +52,4 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 * https://getsatisfaction.com/
 * http://www.portlandonline.com/bts/index.cfm?c=53613
 * https://bugzilla.mozilla.org/
+* http://stackoverflow.com
