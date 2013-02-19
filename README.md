@@ -4,30 +4,16 @@ This project is in early development. See [this post](http://blog.iangilman.com/
 
 You can see it in action at http://angry-mob-beta.appspot.com/
 
-# Technologies We're Using
-
-* https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python
-* http://necolas.github.com/normalize.css/
-* http://jquery.com/
-* http://documentcloud.github.com/underscore/
-* http://lesscss.org/
-* http://amplifyjs.com/
-* http://jqueryui.com/
-* https://github.com/mtrpcic/pathjs
-* http://fgnass.github.com/spin.js/
-* http://modernizr.com/
-* https://github.com/iangilman/zot
+For more information, see the [wiki](https://github.com/iangilman/angry-mob/wiki).
 
 # To Do
 
 * Tags
 * Owner
 * Region
-
 * User pages
 * Email notifications
 * Feed/wall of all changes
-
 * Sessions should last longer
 * When signing in with Twitter, shouldn't have to reauthorize every time
 * Validate forms before forcing login?
@@ -41,15 +27,16 @@ You can see it in action at http://angry-mob-beta.appspot.com/
 * Unsubscribe from event in issue.js's destroy()
 * Issue editor should be its own subview
 
-# Related Projects
+# Technologies We're Using
 
-* http://www.treesny.org/citizenpruner
-* http://sf0.org/
-* http://www.fixmytransport.com/ from http://mysociety.org - code at http://github.com/mysociety
-* http://www.fixmystreet.com/
-* http://www.civicplus.com/
-* http://ushahidi.com/
-* https://getsatisfaction.com/
-* http://www.portlandonline.com/bts/index.cfm?c=53613
-* https://bugzilla.mozilla.org/
-* http://stackoverflow.com
+* https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python
+* http://necolas.github.com/normalize.css/
+* http://jquery.com/
+* http://documentcloud.github.com/underscore/
+* http://lesscss.org/
+* http://amplifyjs.com/
+* http://jqueryui.com/
+* https://github.com/mtrpcic/pathjs
+* http://fgnass.github.com/spin.js/
+* http://modernizr.com/
+* https://github.com/iangilman/zot
